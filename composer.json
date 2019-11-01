@@ -1,0 +1,11 @@
+{
+    "name": "bayukurniawan30/todo-list-magang",
+    "description": "Aplikasi ToDo list sederhana",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": ">=5.6",
+        "ext-pdo": "*",
+        "ext-pdo_mysql": "*"
+    },
+}
