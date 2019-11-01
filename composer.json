@@ -7,5 +7,5 @@
         "php": ">=5.6",
         "ext-pdo": "*",
         "ext-pdo_mysql": "*"
-    },
+    }
 }
