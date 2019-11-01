@@ -1,7 +1,5 @@
 <?php
     session_start();
-    ini_set('display_errors', 1);
-  	error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
     require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'global.php';
     require __DIR__ . DS . '..' . DS . 'connection.php';
