@@ -37,20 +37,20 @@ SET default_with_oids = false;
 -- Name: _categories; Type: TABLE; Schema: public; Owner: rebasedata
 --
 
-CREATE TABLE public._categories (
+CREATE TABLE public.categories (
     id smallint,
     name character varying(12) DEFAULT NULL::character varying,
     created character varying(19) DEFAULT NULL::character varying
 );
 
 
-ALTER TABLE public._categories OWNER TO rebasedata;
+ALTER TABLE public.categories OWNER TO rebasedata;
 
 --
 -- Name: _lists; Type: TABLE; Schema: public; Owner: rebasedata
 --
 
-CREATE TABLE public._lists (
+CREATE TABLE public.lists (
     id smallint,
     todo character varying(16) DEFAULT NULL::character varying,
     category_id smallint,
@@ -60,13 +60,13 @@ CREATE TABLE public._lists (
 );
 
 
-ALTER TABLE public._lists OWNER TO rebasedata;
+ALTER TABLE public.lists OWNER TO rebasedata;
 
 --
 -- Name: _users; Type: TABLE; Schema: public; Owner: rebasedata
 --
 
-CREATE TABLE public._users (
+CREATE TABLE public.users (
     id smallint,
     first_name character varying(4) DEFAULT NULL::character varying,
     last_name character varying(9) DEFAULT NULL::character varying,
@@ -77,13 +77,13 @@ CREATE TABLE public._users (
 );
 
 
-ALTER TABLE public._users OWNER TO rebasedata;
+ALTER TABLE public.users OWNER TO rebasedata;
 
 --
 -- Data for Name: _categories; Type: TABLE DATA; Schema: public; Owner: rebasedata
 --
 
-COPY public._categories (id, name, created) FROM stdin;
+COPY public.categories (id, name, created) FROM stdin;
 1	Belanjaan	2019-10-31 15:02:43
 2	Alat Sekolah	2019-10-31 15:08:36
 \.
@@ -93,7 +93,7 @@ COPY public._categories (id, name, created) FROM stdin;
 -- Data for Name: _lists; Type: TABLE DATA; Schema: public; Owner: rebasedata
 --
 
-COPY public._lists (id, todo, category_id, user_id, assign, status) FROM stdin;
+COPY public.lists (id, todo, category_id, user_id, assign, status) FROM stdin;
 1	Ayam 1kg	1	6	2019-10-31	
 2	Sayur ijo seiket	1	6	2019-10-31	1
 4	Daging Sapi	1	6	2019-11-04	1
@@ -107,7 +107,7 @@ COPY public._lists (id, todo, category_id, user_id, assign, status) FROM stdin;
 -- Data for Name: _users; Type: TABLE DATA; Schema: public; Owner: rebasedata
 --
 
-COPY public._users (id, first_name, last_name, username, email, password, created) FROM stdin;
+COPY public.users (id, first_name, last_name, username, email, password, created) FROM stdin;
 6	Bayu	Kurniawan	baycore	creatifycms@gmail.com	$2y$10$PYS4Oyh/ygIqHPxjzkSxmO5lMFsdVXatQm3VMouOvij3cqFUZ6aia	2019-10-31 13:15:15
 \.
 
