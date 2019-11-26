@@ -33,25 +33,14 @@ SET default_tablespace = '';
 
 SET default_with_oids = false;
 
---
--- Name: _categories; Type: TABLE; Schema: public; Owner: rebasedata
---
-
 CREATE TABLE public.categories (
-    id smallint,
+    id SERIAL PRIMARY KEY,
     name character varying(12) DEFAULT NULL::character varying,
     created character varying(19) DEFAULT NULL::character varying
 );
 
-
-ALTER TABLE public.categories OWNER TO rebasedata;
-
---
--- Name: _lists; Type: TABLE; Schema: public; Owner: rebasedata
---
-
 CREATE TABLE public.lists (
-    id smallint,
+    id SERIAL PRIMARY KEY,
     todo character varying(16) DEFAULT NULL::character varying,
     category_id smallint,
     user_id smallint,
@@ -59,15 +48,8 @@ CREATE TABLE public.lists (
     status character varying(1) DEFAULT NULL::character varying
 );
 
-
-ALTER TABLE public.lists OWNER TO rebasedata;
-
---
--- Name: _users; Type: TABLE; Schema: public; Owner: rebasedata
---
-
 CREATE TABLE public.users (
-    id smallint,
+    id SERIAL PRIMARY KEY,
     first_name character varying(4) DEFAULT NULL::character varying,
     last_name character varying(9) DEFAULT NULL::character varying,
     username character varying(7) DEFAULT NULL::character varying,

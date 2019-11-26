@@ -28,7 +28,7 @@
                         password,
                         created) 
                     VALUES (:first_name, :last_name, :username, :email, :password, :created)");
-                    foreach ($data as $key => &$value) {
+                    foreach ($data as $key => $value) {
                         $field = ':' . $key;
                         $result->bindParam($field, $value);
                     }
