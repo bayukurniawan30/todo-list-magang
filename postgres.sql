@@ -62,39 +62,6 @@ CREATE TABLE public.users (
 ALTER TABLE public.users OWNER TO rebasedata;
 
 --
--- Data for Name: _categories; Type: TABLE DATA; Schema: public; Owner: rebasedata
---
-
-COPY public.categories (id, name, created) FROM stdin;
-1	Belanjaan	2019-10-31 15:02:43
-2	Alat Sekolah	2019-10-31 15:08:36
-\.
-
-
---
--- Data for Name: _lists; Type: TABLE DATA; Schema: public; Owner: rebasedata
---
-
-COPY public.lists (id, todo, category_id, user_id, assign, status) FROM stdin;
-1	Ayam 1kg	1	6	2019-10-31	
-2	Sayur ijo seiket	1	6	2019-10-31	1
-4	Daging Sapi	1	6	2019-11-04	1
-5	Pensil	2	6	2019-10-31	
-6	Penghapus	2	6	2019-10-31	
-7	Bumbu masak	1	6	2019-10-31	
-\.
-
-
---
--- Data for Name: _users; Type: TABLE DATA; Schema: public; Owner: rebasedata
---
-
-COPY public.users (id, first_name, last_name, username, email, password, created) FROM stdin;
-6	Bayu	Kurniawan	baycore	creatifycms@gmail.com	$2y$10$PYS4Oyh/ygIqHPxjzkSxmO5lMFsdVXatQm3VMouOvij3cqFUZ6aia	2019-10-31 13:15:15
-\.
-
-
---
 -- PostgreSQL database dump complete
 --
 
