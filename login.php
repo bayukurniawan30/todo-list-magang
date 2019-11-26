@@ -23,7 +23,7 @@
     </head>
     <body>
         <div class="uk-height-viewport uk-flex uk-flex-center uk-flex-middle uk-background-primary" uk-grid>
-            <div class="uk-card uk-card-default uk-card-body uk-width-1-3">
+            <div class="uk-card uk-card-default uk-card-body uk-width-1-3 uk-width-1-1@s">
                 <h1 class="uk-text-center">ToDo List</h1>
 
                 <h3 class="uk-margin-remove-bottom">Sign In</h3>
