@@ -44,7 +44,7 @@
                     // Mysql
                     // $condition = "WHERE lists.user_id = '$userId' AND categories.id = '$category' AND lists.assign = CURDATE() + INTERVAL 1 DAY";
                     // Postgres
-                    $condition = "WHERE lists.user_id = '$userId' AND categories.id = '$category' AND  AND lists.assign = TIMESTAMP 'tomorrow'";
+                    $condition = "WHERE lists.user_id = '$userId' AND categories.id = '$category' AND lists.assign = TIMESTAMP 'tomorrow'";
                 }
                 elseif ($assign == 'upcoming') {
                     // Mysql
