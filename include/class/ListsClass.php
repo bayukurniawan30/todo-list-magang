@@ -122,7 +122,7 @@
             $data = array_map('trim', $data);
             $data['user_id'] = $_SESSION['id'];
             $data['assign']  = date('Y-m-d', strtotime($data['assign']));
-            $data['status']  = NULL;
+            $data['status']  = '0';
 
             $result  = $this->pdo->prepare("INSERT INTO lists(
                 todo, 
