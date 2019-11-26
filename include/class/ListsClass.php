@@ -122,13 +122,15 @@
             $data = array_map('trim', $data);
             $data['user_id'] = $_SESSION['id'];
             $data['assign']  = date('Y-m-d', strtotime($data['assign']));
+            $data['status']  = NULL;
 
             $result  = $this->pdo->prepare("INSERT INTO lists(
                 todo, 
                 category_id, 
                 user_id, 
-                assign) 
-            VALUES (:todo, :category_id, :user_id, :assign)");
+                assign,
+                status) 
+            VALUES (:todo, :category_id, :user_id, :assign, :status)");
             foreach ($data as $key => &$value) {
                 $field = ':' . $key;
                 $result->bindParam($field, $value);
