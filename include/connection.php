@@ -24,4 +24,7 @@
          ltrim($db["path"], "/")
       ));
    }
+   else {
+      $pdo = new PDO('mysql:host=localhost;dbname=todolistmagang', "root", "");
+   }
 ?>
