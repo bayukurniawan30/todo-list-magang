@@ -8,28 +8,28 @@
                         <div class="uk-inline">
                             <button class="uk-button uk-button-default btn-white"><?= $cat == NULL ? 'Select Category' : $categoriesClass->detail($cat)->name ?></button>
                             <div uk-dropdown>
-                            <ul class="uk-nav uk-dropdown-nav">
-                                <?php
-                                    if ($fetchCategories):
-                                        foreach ($fetchCategories as $category):
-                                ?>
-                                <li><a href="index.php?page=dashboard&cat=<?= $category->id ?>"><?= $category->name ?></a></li>
-                                <?php
-                                        endforeach;
-                                    else:
-                                ?>
-                                <li><a href="#">There is no category found</a></li>
-                                <?php
-                                    endif;
-                                ?>
-                            </ul>
+                                <ul class="uk-nav uk-dropdown-nav">
+                                    <?php
+                                        if ($fetchCategories):
+                                            foreach ($fetchCategories as $category):
+                                    ?>
+                                    <li><a href="index.php?page=dashboard&cat=<?= $category->id ?>"><?= $category->name ?></a></li>
+                                    <?php
+                                            endforeach;
+                                        else:
+                                    ?>
+                                    <li><a href="#">There is no category found</a></li>
+                                    <?php
+                                        endif;
+                                    ?>
+                                </ul>
+                            </div>
                         </div>
-                        </div>
-                        <button class="uk-button uk-button-primary" uk-toggle="target: #modal-add-category"><span uk-icon="plus"></span> Add Category</button>
+                        <button class="uk-button uk-button-primary" uk-toggle="target: #modal-add-category"><span uk-icon="plus"></span> <span class="uk-visible@m">Add Category</span></button>
                     </div>
 
                     <div class="uk-float-right">
-                        <button class="uk-button uk-button-primary" uk-toggle="target: #modal-add-list"><span uk-icon="pencil"></span> Add List</button>
+                        <button class="uk-button uk-button-primary" uk-toggle="target: #modal-add-list"><span uk-icon="pencil"></span> <span class="uk-visible@m">Add List</span></button>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
             if ($assign == NULL):
         ?>
 
-        <div class="uk-width-1-3">
+        <div class="uk-width-1-1 uk-width-1-3@m">
             <div class="uk-card uk-card-default">
                 <div class="uk-card-header">
                     <h3 class="uk-text-center">Today</h3>
@@ -85,7 +85,7 @@
                 </div>
             </div>
         </div>
-        <div class="uk-width-1-3">
+        <div class="uk-width-1-1 uk-width-1-3@m">
             <div class="uk-card uk-card-default">
                 <div class="uk-card-header">
                     <h3 class="uk-text-center">Tomorrow</h3>
@@ -131,7 +131,7 @@
                 </div>
             </div>
         </div>
-        <div class="uk-width-1-3">
+        <div class="uk-width-1-1 uk-width-1-3@m">
             <div class="uk-card uk-card-default">
                 <div class="uk-card-header">
                     <h3 class="uk-text-center">Upcoming</h3>

@@ -52,3 +52,37 @@
         </nav>
     </div>
 </div>
+
+<div id="offcanvas-nav" uk-offcanvas="overlay: true">
+    <div class="uk-offcanvas-bar">
+        <ul class="uk-nav uk-nav-default">
+            <li class="uk-active">
+                <a href="#">
+                    <strong><?= strtoupper($user->first_name . ' ' . $user->last_name) ?></strong>
+                </a>
+            </li>
+            <li class="uk-nav-divider"></li>
+            <li class="<?= $assign == 'today' ? 'uk-active' : '' ?>">
+                <a href="<?= $todayUrl ?>">
+                    Today
+                </a>
+            </li>
+            <li class="<?= $assign == 'tomorrow' ? 'uk-active' : '' ?>">
+                <a href="<?= $tomorrowUrl ?>">
+                    Tomorrow
+                </a>
+            </li>
+            <li class="<?= $assign == 'upcoming' ? 'uk-active' : '' ?>">
+                <a href="<?= $upcomingUrl ?>">
+                    Upcoming
+                </a>
+            </li>
+            <li class="uk-nav-divider"></li>
+            <li class="">
+                <a href="include/action/signout.php">
+                Sign Out
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

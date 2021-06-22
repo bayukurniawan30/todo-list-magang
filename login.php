@@ -20,9 +20,16 @@
         <link rel="stylesheet" href="assets/css/uikit.min.css" />
         <script src="assets/js/uikit.min.js"></script>
         <script src="assets/js/uikit-icons.min.js"></script>
+        <style>
+            @media(max-width: 767px) {
+                .login-bg {
+                    padding: 30px 30px 30px 60px;
+                }
+            }
+        </style>
     </head>
     <body>
-        <div class="uk-height-viewport uk-flex uk-flex-center uk-flex-middle uk-background-primary" uk-grid>
+        <div class="uk-height-viewport uk-flex uk-flex-center uk-flex-middle uk-background-primary login-bg" uk-grid>
             <div class="uk-card uk-card-default uk-card-body uk-width-1-3@m uk-width-1-1">
                 <h1 class="uk-text-center">ToDo List</h1>
 
