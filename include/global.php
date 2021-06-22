@@ -4,6 +4,7 @@
 
     define('APP_TITLE', 'ToDo List');
     define('DS', DIRECTORY_SEPARATOR);
+    define('DB_ENGINE', 'mysql'); // mysql, postgresql
 
     function shortDescription($text, $long = 25)
     {

@@ -20,16 +20,24 @@
                     $condition = "WHERE lists.user_id = '$userId' AND lists.assign = '$today'";
                 }
                 elseif ($assign == 'tomorrow') {
-                    // Mysql
-                    // $condition = "WHERE lists.user_id = '$userId' AND lists.assign = CURDATE() + INTERVAL 1 DAY";
-                    // Postgres
-                    $condition = "WHERE lists.user_id = '$userId' AND lists.assign = TIMESTAMP 'tomorrow'";
+                    if (DB_ENGINE == 'mysql') {
+                        // Mysql
+                        $condition = "WHERE lists.user_id = '$userId' AND lists.assign = CURDATE() + INTERVAL 1 DAY";
+                    }
+                    elseif (DB_ENGINE == 'postgresql') {
+                        // Postgres
+                        $condition = "WHERE lists.user_id = '$userId' AND lists.assign = TIMESTAMP 'tomorrow'";
+                    }
                 }
                 elseif ($assign == 'upcoming') {
-                    // Mysql
-                    // $condition = "WHERE lists.user_id = '$userId' AND lists.assign > CURDATE() + INTERVAL 1 DAY";
-                    // Postgres
-                    $condition = "WHERE lists.user_id = '$userId' AND lists.assign > TIMESTAMP 'tomorrow'";
+                    if (DB_ENGINE == 'mysql') {
+                        // Mysql
+                        $condition = "WHERE lists.user_id = '$userId' AND lists.assign > CURDATE() + INTERVAL 1 DAY";
+                    }
+                    elseif (DB_ENGINE == 'postgresql') {
+                        // Postgres
+                        $condition = "WHERE lists.user_id = '$userId' AND lists.assign > TIMESTAMP 'tomorrow'";
+                    }
                 }
             }
             else {
@@ -41,51 +49,64 @@
                     $condition = "WHERE lists.user_id = '$userId' AND categories.id = '$category' AND lists.assign = '$today'";
                 }
                 elseif ($assign == 'tomorrow') {
-                    // Mysql
-                    // $condition = "WHERE lists.user_id = '$userId' AND categories.id = '$category' AND lists.assign = CURDATE() + INTERVAL 1 DAY";
-                    // Postgres
-                    $condition = "WHERE lists.user_id = '$userId' AND categories.id = '$category' AND lists.assign = TIMESTAMP 'tomorrow'";
+                    if (DB_ENGINE == 'mysql') {
+                        // Mysql
+                        $condition = "WHERE lists.user_id = '$userId' AND categories.id = '$category' AND lists.assign = CURDATE() + INTERVAL 1 DAY";
+                    }
+                    elseif (DB_ENGINE == 'postgresql') {
+                        // Postgres
+                        $condition = "WHERE lists.user_id = '$userId' AND categories.id = '$category' AND lists.assign = TIMESTAMP 'tomorrow'";
+                    }
                 }
                 elseif ($assign == 'upcoming') {
-                    // Mysql
-                    // $condition = "WHERE lists.user_id = '$userId' AND categories.id = '$category' AND lists.assign > CURDATE() + INTERVAL 1 DAY";
-                    // Postgres
-                    $condition = "WHERE lists.user_id = '$userId' AND categories.id = '$category' AND lists.assign > TIMESTAMP 'tomorrow'";
+                    if (DB_ENGINE == 'mysql') {
+                        // Mysql
+                        $condition = "WHERE lists.user_id = '$userId' AND categories.id = '$category' AND lists.assign > CURDATE() + INTERVAL 1 DAY";
+                    }
+                    elseif (DB_ENGINE == 'postgresql') {
+                        // Postgres
+                        $condition = "WHERE lists.user_id = '$userId' AND categories.id = '$category' AND lists.assign > TIMESTAMP 'tomorrow'";
+                    }
                 }
             }
 
-            // Mysql way
-            // $primaryTableName         = 'lists';
-            // $primaryTableColumnQuery  = 'SHOW COLUMNS FROM ' . $primaryTableName;
-            // $primaryTableColumnResult = $this->pdo->query($primaryTableColumnQuery);
-            // $primaryColumnNames       = [];
-            // while($rows = $primaryTableColumnResult->fetch(PDO::FETCH_OBJ)) {
-            //     $primaryColumnNames[] = $rows->Field;
-            // }
+            if (DB_ENGINE == 'mysql') {
+                // Mysql way
+                $primaryTableName         = 'lists';
+                $primaryTableColumnQuery  = 'SHOW COLUMNS FROM ' . $primaryTableName;
+                $primaryTableColumnResult = $this->pdo->query($primaryTableColumnQuery);
+                $primaryColumnNames       = [];
+                while($rows = $primaryTableColumnResult->fetch(PDO::FETCH_OBJ)) {
+                    $primaryColumnNames[] = $rows->Field;
+                }
+            }
+            elseif (DB_ENGINE == 'postgresql') {
+                // Postgres way (manual)
+                $primaryTableName   = 'lists';
+                $primaryColumnNames = ['id', 'todo', 'category_id', 'user_id', 'assign', 'status'];
+                $primaryTable = [
+                    $primaryTableName => $primaryColumnNames
+                ];
+            }
 
-            // Postgres way (manual)
-            $primaryTableName   = 'lists';
-            $primaryColumnNames = ['id', 'todo', 'category_id', 'user_id', 'assign', 'status'];
-            $primaryTable = [
-                $primaryTableName => $primaryColumnNames
-            ];
-
-            // Mysql way
-            // $joinTableName         = 'categories';
-            // $joinTableColumnQuery  = 'SHOW COLUMNS FROM ' . $joinTableName;
-            // $joinTableColumnResult = $this->pdo->query($joinTableColumnQuery);
-            // $joinColumnNames       = [];
-            // while($rows = $joinTableColumnResult->fetch(PDO::FETCH_OBJ)) {
-            //     $joinColumnNames[] = $rows->Field;
-            // }
-
-            // Postgres way
-            $joinTableName     = 'categories';
-            $joinColumnNames   = ['id', 'name', 'created'];
-            $joinTable = [
-                $joinTableName => $joinColumnNames
-            ];
-            
+            if (DB_ENGINE == 'mysql') {
+                // Mysql way
+                $joinTableName         = 'categories';
+                $joinTableColumnQuery  = 'SHOW COLUMNS FROM ' . $joinTableName;
+                $joinTableColumnResult = $this->pdo->query($joinTableColumnQuery);
+                $joinColumnNames       = [];
+                while($rows = $joinTableColumnResult->fetch(PDO::FETCH_OBJ)) {
+                    $joinColumnNames[] = $rows->Field;
+                }
+            }
+            elseif (DB_ENGINE == 'postgresql') {
+                // Postgres way
+                $joinTableName     = 'categories';
+                $joinColumnNames   = ['id', 'name', 'created'];
+                $joinTable = [
+                    $joinTableName => $joinColumnNames
+                ];
+            }
 
             $generatedQuery = "SELECT ";
             foreach ($primaryColumnNames as $primaryColumn) {
